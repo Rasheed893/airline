@@ -1,0 +1,39 @@
+{% extends "flights/layout.html" %}
+
+{% block body %}
+    <h1>Flights</h1>
+    <!-- <ul>
+        {% for flight in flights %}
+            <li>Flight {{flight.id}} : {{flight.origin}} to {{flight.destination}}</li><br>
+        {% endfor %}
+    </ul><br> -->
+    <div id="main-div" class="clearfix">
+        <div id="siderbar-div">
+            {% for airport in airports %} 
+                <li>Airport : {{ airport.code }} - {{ airport.city }}</li>
+                Departing Flights:
+                <ul> 
+                    {% for flight in airport.departures.all %}
+                        <li>
+                            <a href="{% url 'flight' flight.id %}">
+                                Flight {{ flight.id }} to {{ flight.destination.city }} ({{ flight.duration }} minutes)
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+
+        <div id="bodyarea-div">
+            {% for airport in airports %}
+                <li>Airport : {{ airport.code }} - {{ airport.city }}</li>
+                arrivals Flights:
+                <ul>
+                    {% for flight in airport.arrivals.all %}
+                        <li>Flight {{ flight.id }} from {{ flight.origin.city }} ({{ flight.duration }} minutes)</li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+h1{
+    font-family: sans-serif;
+    font-size: 50px;
+    text-align: center;
+    color: blue;
+}
+
+#main-div {
+    display: flex;
+}
+/* 
+#sidebar-div {
+    flex: 3;
+ 
+}
+
+#bodyarea-div {
+    flex: 3; /* Adjust this value to change the width of the main content area */
+    /* Additional styling for the main content area */
+/* } */ */
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#siderbar-div, #bodyarea-div {
+    box-sizing: border-box;
+    flex: 3;
+}
